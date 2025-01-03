@@ -1,0 +1,3 @@
+[submodule "ros_pkgs/hopper-description"]
+	path = ros_pkgs/hopper-description
+	url = git@github.com:thesamrooney/hopper-description.git
