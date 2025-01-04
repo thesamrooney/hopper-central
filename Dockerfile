@@ -11,8 +11,8 @@ ros-jazzy-ros2-controllers \
 ros-jazzy-gz-ros2-control
 
 RUN mkdir -p /ros2_ws/src
-WORKDIR /ros2_ws/src
-COPY ./ros_pkgs/ .
+WORKDIR /ros2_ws
+COPY ./ros_pkgs/ ./src
 
 RUN source /opt/ros/jazzy/setup.bash \
 && rosdep install --from-paths src --ignore-src --rosdistro jazzy -y \
@@ -25,3 +25,5 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]
 
 ENV GZ_SIM_RESOURCE_PATH="$GZ_SIM_RESOURCE_PATH:/ros2_ws/src/"
+
+CMD [ "ros2", "launch", "hopper-description", "gz_bringup.launch.py" ]
